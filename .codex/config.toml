@@ -1,0 +1,9 @@
+default_permissions = "project-edit"
+
+[permissions.project-edit]
+description = "Edit this project without accessing local environment files."
+extends = ":workspace"
+
+[permissions.project-edit.filesystem.":workspace_roots"]
+".env" = "deny"
+".env.*" = "deny"

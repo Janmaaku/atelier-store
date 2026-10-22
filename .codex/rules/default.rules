@@ -1,0 +1,37 @@
+# Allow routine project checks to run outside the sandbox without prompting.
+prefix_rule(
+    pattern = ["pnpm", "build"],
+    decision = "allow",
+    justification = "Run the project build.",
+)
+
+prefix_rule(
+    pattern = ["pnpm", "test"],
+    decision = "allow",
+    justification = "Run project tests.",
+)
+
+prefix_rule(
+    pattern = ["pnpm", "typecheck"],
+    decision = "allow",
+    justification = "Run the project type checker.",
+)
+
+prefix_rule(
+    pattern = ["git", "status"],
+    decision = "allow",
+    justification = "Inspect repository status.",
+)
+
+prefix_rule(
+    pattern = ["git", "diff"],
+    decision = "allow",
+    justification = "Inspect repository changes.",
+)
+
+# Always ask before publishing commits to a remote repository.
+prefix_rule(
+    pattern = ["git", "push"],
+    decision = "prompt",
+    justification = "Confirm before pushing commits to a remote repository.",
+)
